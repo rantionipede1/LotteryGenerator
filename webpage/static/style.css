@@ -1,0 +1,74 @@
+.lottery_form {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	border: 0;
+
+	width: 80vw;
+	left: 10vw;
+	font-size: 2em;
+}
+
+.lottery_form fieldset {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.lottery_form legend {
+	position: relative;
+	margin: 0 0 1em;
+	padding: 0;
+	left: 0;
+	
+	width: 80vw;
+	text-align: center;
+	color: blue;
+	overflow-wrap: break-word;
+	font-family: arial;
+}
+
+.lottery_form div {
+	display: flex;
+	width: 80vw;
+	align-items: center;
+	justify-content: center;
+}
+
+input[type="submit"] {
+	display: block;
+	width: 200px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	
+	background-color: #183EFA;
+	color: white;
+	font-size: .5em;
+	border-radius: 8px;
+	transition-duration: 0.4s;
+	border: none;
+	
+}
+
+input[type="submit"]:active {
+	transform: scale(.93);
+}
+
+input[type="number"] {
+	margin: .1em;
+	padding: 8px 0 4px;
+	width: 1em;
+	height: 80%;
+	line-height: 1;
+	font-size: 100%;
+	text-align: center;
+	appearance: textfield;
+	
+	border: 2px solid #BBBBFF;
+	color: blue;
+	font-family: arial;
+	border-radius: 4px;
+}
