@@ -1,0 +1,10 @@
+frame Lottery Startup 
+title Startup Sequence Diagram
+participant Player
+participant Interface
+
+Player -> Interface : Player visits domain.
+Interface -> Interface : System prepares static content.
+Interface -->> Player : Interface displays webapp forms.
+
+// generated with sequencediagram.org
