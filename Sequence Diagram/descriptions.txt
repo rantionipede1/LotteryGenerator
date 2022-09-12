@@ -1,0 +1,35 @@
+Startup Sequence
+
+Description
+The player visits the webpage over HTTP. The system prepares and delivers the static content necessary to play the lottery.
+
+Precondition
+The player is using an appropriate browser to view the site. The system is online and running.
+
+Postcondition
+The player's browser displays the static content. The player can interact with the content.
+
+
+Operational Sequence
+
+Description 
+The player plays the lottery via form submission. The system handles the submission, validates the input, determines and displays whether the player has won.
+
+Precondition
+The player is over 18 years of age. The player submission is valid.
+
+Postcondition
+The player is able to submit the form. The player is informed whether they win or lose.
+
+
+Shutdown Sequence
+
+Description
+The player exits the website.
+
+Precondition
+The player closes the browser.
+
+Postcondition
+The lottery finishes.
+The system remains available for later access.
