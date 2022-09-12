@@ -1,0 +1,8 @@
+frame Lottery Shutdown 
+title Shutdown Sequence Diagram
+participant Player
+participant Interface
+
+Player -> Interface : Player exits domain.
+
+// generated with sequencediagram.org
