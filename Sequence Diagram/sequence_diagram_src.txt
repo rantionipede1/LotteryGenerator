@@ -27,7 +27,7 @@ loop number of plays
   else no for auto
       Input -> ManualGenerate : Validate manual input
   end
-  
+  Input -->> Interface : [Exception] Display error.
   Input -> WinningNumber : Determine if winner
   WinningNumber -->> Interface : Display results; play again.
 end
