@@ -1,0 +1,37 @@
+title Lottery Sequence Diagram
+
+participant Player
+participant Interface
+participant Input
+participant AutoGenerate
+participant ManualGenerate
+participant AgeLimit
+participant WinningNumber
+
+lifelinestyle Input #black1solid
+lifelinestyle AutoGenerate #black1solid
+lifelinestyle ManualGenerate #black1solid
+lifelinestyle WinningNumber #black1solid
+lifelinestyle AgeLimit #black1solid
+
+Player - Interface  Over 18 (YN), Auto-generate (YN, Manual Input),  Number of plays (Integer)
+
+Interface - Input  Over 18, Auto-generate, Number of plays
+
+Interface -- Input  [not over 18] You are not old enough to play.    
+
+loop number of plays
+
+  alt yes for auto
+    Input - AutoGenerate  Generate number
+
+  else no for auto
+      Input - ManualGenerate  Validate manual input
+  end
+  Input -- Interface  [Exception] Display error.
+  Input - WinningNumber  Determine if winner
+  WinningNumber -- Interface  Display results; play again.
+end
+
+
+ generated with sequencediagram.org
