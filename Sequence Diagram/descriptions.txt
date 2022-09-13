@@ -33,3 +33,16 @@ The player closes the browser.
 Postcondition
 The lottery finishes.
 The system remains available for later access.
+
+
+Error Handling Sequence
+
+Description
+ManualInput subsystem receives Player-provided input, verifies input is numeric and in range.
+If not, display error message to Player via interface.
+
+Precondition
+Player chooses manual input option.
+
+Postcondition
+Player recieves message concerning validity of their input.
