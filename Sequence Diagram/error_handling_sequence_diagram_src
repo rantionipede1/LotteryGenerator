@@ -1,0 +1,15 @@
+title Error Handling Sequence Diagram
+
+participant Interface
+participant Input
+participant ManualGenerate
+
+lifelinestyle Input #black:1:solid
+lifelinestyle ManualGenerate #black:1:solid
+
+      Input -> ManualGenerate : Receive manual input
+      ManualGenerate -> ManualGenerate : Verify input is numeric and within range
+
+      	ManualGenerate -->> Interface : [Input is invalid] Display error to player
+
+// generated with sequencediagram.org
