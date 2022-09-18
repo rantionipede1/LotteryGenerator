@@ -5,24 +5,68 @@
         <title>Lottery</title> 
         <link rel="stylesheet" href="../static/style.css">
     </head>
-    <body>
-        <form class="lottery_form" name="lottery-form" action="#">
+    <body onload="init()" >
+        <div class='page_logo'>
+	 Lottery Generator 
+        </div>
+
+        <form class="age_form" id="age-form" name="age" action="#">
             <fieldset>
-                <legend>Enter Lottery Number</legend>
-
-                <div class = "flex-container">
-                    <input type="number" pattern="[0-9]*"  value="" inputtype="numeric" autocomplete="lottery_form" id="num-1" required>
-
-                    <!-- Autocomplete not to put on other input -->
-                    <input type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-2" required>
-                    <input type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-3" required>
-                    <input type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-4" required>
-                    <input type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-5" required>
-                    <input type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-6" required>
-                </div>
-                <input type="submit" value="Submit">
-                    
+                <legend> Please enter your age below: </legend>
+                <input class="age_input" type="number" pattern="[0-9]*" value="" inputtype="numeric" id="age-field" required>
+                <input type="submit" value="Submit" onclick="formSubmitted('age-form')">
             </fieldset>
         </form>
+
+        <form class="number_of_games_form" id = "number-of-games-form" name="number-of-games" action="#">
+            <fieldset>
+                <legend> How many games would you like to play? (Max: 5 games): </legend>
+                <select class="number_select" name="plays" id="plays">
+                    <option value="1" selected="selected">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input type="submit" value="Submit" onclick="formSubmitted('number-of-games-form')">
+            </fieldset>
+        </form> 
+
+        <form class="lottery_form" id = "lottery-form" name="lottery" action="#">
+            <fieldset>
+                <legend id = "game-number" style="margin:0 auto 0;"> Game: 1/5 </legend>
+                <legend>Enter Lottery Number</legend>
+                <div class = "flex-container">
+                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" autocomplete="lottery-form" id="num-1" required>
+                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-2" required>
+                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-3" required>
+                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-4" required>
+                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-5" required>
+                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-6" required>
+                </div>
+                <div id="lottery-error-message"> </div> 
+                <div style="width:30%; margin: 0 auto 0;" >
+                    <input type="submit" value="Generate" onclick="autoGenerate()">
+                    <input type="submit" value="Submit" onclick="verifyNumbers">
+                </div>
+            </fieldset>           
+        </form>
+
+        <script>
+            function formSubmitted(elementId) {
+                const element = document.getElementById(elementId);
+                element.remove(); // Remove element
+                if (element.id == 'age-form') {
+                    document.getElementById('number-of-games-form').style.display = "block";
+                } else if (element.id == 'number-of-games-form') {
+                    document.getElementById('lottery-form').style.display = "block";
+                }
+            }
+            function init() {
+                const element = document.getElementById('age-form');
+                element.style.display = "block";
+            }            
+        </script>
+
     </body>
 </html>
