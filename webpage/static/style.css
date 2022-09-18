@@ -1,74 +1,93 @@
-.lottery_form {
-	position: absolute;
+.page_logo {
+	display:block;
+	padding: 0;
 	margin: 0;
-	padding: 0;
-	border: 0;
-
-	width: 80vw;
-	left: 10vw;
-	font-size: 2em;
-}
-
-.lottery_form fieldset {
-	position: relative;
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-.lottery_form legend {
-	position: relative;
-	margin: 0 0 1em;
-	padding: 0;
-	left: 0;
-	
-	width: 80vw;
-	text-align: center;
+	overflow-wrap: normal;
+	font-size: 3em;
+	font-family: tahoma;
 	color: blue;
-	overflow-wrap: break-word;
+}
+
+[class*="_form"] {
+	display:none;
+	margin: 0em auto 3em;
+	padding: 1em auto;
+}
+
+[class*="_form"] legend {
+	display:block;
+	text-align: center;
+	margin: 1em auto;
+
 	font-family: arial;
+	font-size: 1em;
+	overflow-wrap: break-word;
 }
 
-.lottery_form div {
-	display: flex;
-	width: 80vw;
-	align-items: center;
-	justify-content: center;
+[class*="_form"] fieldset {
+	position: block;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
-input[type="submit"] {
+[class*="_form"] input[type="submit"] {
 	display: block;
 	width: 200px;
 	height: 50px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
+	margin: 20px auto;
 	
 	background-color: #183EFA;
 	color: white;
-	font-size: .5em;
+	font-size: 1em;
 	border-radius: 8px;
 	transition-duration: 0.4s;
 	border: none;
-	
 }
 
 input[type="submit"]:active {
 	transform: scale(.93);
 }
 
-input[type="number"] {
-	margin: .1em;
+.age_input {
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.number_input {
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.number_select {
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.number_field {
+	margin: .2em;
 	padding: 8px 0 4px;
-	width: 1em;
-	height: 80%;
-	line-height: 1;
+	width: 2em;
+	height: 2em;
+
 	font-size: 100%;
 	text-align: center;
-	appearance: textfield;
-	
-	border: 2px solid #BBBBFF;
-	color: blue;
 	font-family: arial;
+	color: blue;
+
+	appearance: textfield;
+	border: 2px solid #BBBBFF;
 	border-radius: 4px;
 }
+
+
+.lottery_form div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
