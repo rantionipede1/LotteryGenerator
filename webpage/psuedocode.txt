@@ -1,0 +1,43 @@
+// Psuedo-code for JavaScript used in index.jsp (main webpage)
+
+
+function formSubmitted(formID)  // display next form upon form submission.
+  if (formID is for ageForm) 
+    showForm( numberOfPlaysForm );
+  
+  else if (formID is for numberOfPlaysForm) 
+    showForm( lotteryForm );
+}
+
+function showForm(formID)   // make form with ID visible.
+  make form visible;
+
+function hideForm(formID)   // make form with ID not visible.
+  make form not visible;
+
+
+// jQuery framework code
+
+on document ready ( function() {
+
+  (ajax code) {
+    send request to InitServlet;
+    if success 
+      if sessionData exists 
+        go straight to lottery form, allow player to continue game;
+      else 
+        resume as normal;
+  });
+
+  ageForm.onSubmission( function()
+    (ajax code) {
+      send request with data{userAge input} to VerifyAgeServlet;
+      if success 
+        if (old enough) 
+          show next form;
+        else 
+          display error to user;
+    });
+    
+});
+  
