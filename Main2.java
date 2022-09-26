@@ -60,7 +60,7 @@ public class Main2 {
         int[] lotteryArray = new int[slots];  // array to store the numbers drawn
         int randomNumber = 0;
         boolean isRepeated;  // variable to be used to stop numbers from repeating
-
+        // Method for Auto-Generate
         // USER RECEIVES AUTOMATIC NUMBERS
         for (int numberDrawn = 0; numberDrawn < slots; numberDrawn++) {  // for loop to draw numbers
             do {
