@@ -187,7 +187,6 @@
                         url : 'InitServlet',
                         data : {},
                         success : function(returnValue) {
-                            $('#ageerror').html(returnValue);
                             if (returnValue != "null") {
                                 hideForm('ageform');
                                 hideForm('numplaysform');
