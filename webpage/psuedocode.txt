@@ -18,9 +18,9 @@ function hideForm(formID)   // make form with ID not visible.
 
 // jQuery framework code
 
-on document ready ( function() {
+on document ready ( function() {   // page has loaded
 
-  (ajax code) {
+  (ajax code) {                    
     send request to InitServlet;
     if success 
       if sessionData exists 
