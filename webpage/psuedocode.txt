@@ -20,24 +20,34 @@ function hideForm(formID)   // make form with ID not visible.
 
 on document ready ( function() {   // page has loaded
 
-  (ajax code) {                    
+  (ajax code)                   
     send request to InitServlet;
     if success 
       if sessionData exists 
         go straight to lottery form, allow player to continue game;
       else 
         resume as normal;
-  });
+  
 
-  ageForm.onSubmission( function()
-    (ajax code) {
+  ageForm.onSubmission {
+    (ajax code)
       send request with data{userAge input} to VerifyAgeServlet;
       if success 
         if (old enough) 
           show next form;
         else 
           display error to user;
-    });
+    }
+    
+  numPlaysForm.onSubmission {
+    (ajax code)
+      send request with data{numberPlays input} to NumberPlaysServlet;
+      if success
+        create a new session for player;
+        add a session variable (playsRemaining) equal to numberPlays;
+      else
+        display error;
+    }
     
 });
   
