@@ -33,7 +33,6 @@ function updateLotteryForm(plays, playsRemaining)
   
 
 // jQuery framework code
-
 on document ready ( function() {   // page has loaded
 
   (ajax code)                   
@@ -60,16 +59,12 @@ on document ready ( function() {   // page has loaded
       send request with data{numberPlays input} to NumberPlaysServlet;
       if success
         show next form;
-        // create a new session for player;
-        // add session variable (plays) equal to numberPlays;
-        // add session variable (playsRemaining) equal to numberPlays;
       else
         display error;
     }
 
   lotteryForm.onSubmission {
       determineWinner(formInput);
-      
     }
     
 });
