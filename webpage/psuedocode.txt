@@ -8,12 +8,12 @@ function formSubmitted(formID)  // display next form upon form submission.
   else if (formID is for numberOfPlaysForm) 
     showForm( lotteryForm );
     
-    
 function showForm(formID)   // make form with ID visible.
   make form visible;
 
 function hideForm(formID)   // make form with ID not visible.
   make form not visible;
+
 
 function determineWinner(lotteryNumbers)
     send request with data{lotteryNumbers input} to DetermineWinnerServlet;
@@ -23,14 +23,11 @@ function determineWinner(lotteryNumbers)
         reload web page;
       else
         display "Sorry, you are not a winner."; 
+        updateLotteryForm(plays, playsRemaining);
     else
       display error;
       
-  
-
-function updateLotteryForm()
-  get plays;
-  get playsRemaining;
+function updateLotteryForm(plays, playsRemaining)
   display "Plays remaining: (playsRemaining)/(plays)"
   set input fields to default value;
   
@@ -44,10 +41,10 @@ on document ready ( function() {   // page has loaded
     if success 
       if sessionData exists 
         go straight to lottery form, allow player to continue game;
+        updateLotteryForm(plays, playsRemaining);
       else 
         resume as normal;
   
-
   ageForm.onSubmission {
     (ajax code)
       send request with data{userAge input} to VerifyAgeServlet;
@@ -62,11 +59,17 @@ on document ready ( function() {   // page has loaded
     (ajax code)
       send request with data{numberPlays input} to NumberPlaysServlet;
       if success
-        create a new session for player;
-        add session variable (plays) equal to numberPlays;
-        add session variable (playsRemaining) equal to numberPlays;
+        show next form;
+        // create a new session for player;
+        // add session variable (plays) equal to numberPlays;
+        // add session variable (playsRemaining) equal to numberPlays;
       else
         display error;
+    }
+
+  lotteryForm.onSubmission {
+      determineWinner(formInput);
+      
     }
     
 });
