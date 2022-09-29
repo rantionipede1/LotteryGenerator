@@ -263,7 +263,7 @@
             $(document).ready(function () {
                
                 $.ajax({
-                    url : 'InitServlet',
+                    url : 'SessionServlet',
                     data : {},
                     success : function(returnValue) {
                         if (returnValue != "") {
