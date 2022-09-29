@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html> 
 <html>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="ISO-8859-1"> 
     <head> 
         <title>Lottery</title> 
         <style>
@@ -90,13 +92,53 @@
                 border-radius: 4px;
             }
 
-
-            .lottery_form div {
+			.tab {
+			  margin: 0 auto 0;
+			  width:30%;
+			  display: flex;
+			  overflow: hidden;
+			  justify-content:space-around;
+			  align-items: center;
+			}
+			
+			.tab button {
+			  background-color: rgba(255,255,255, 0.3);
+			  float: left;
+			  border: none;
+			  outline: none;
+			  cursor: pointer;
+			  padding: 14px 16px;
+			  transition: 0.3s;
+			}
+			
+			.tab button:hover {
+			  background-color: #ddd;
+			}
+			
+			/* Create an active/current tablink class */
+			.tab button.active {
+			  background-color: #ccc;
+			}
+			
+            .lftabcontent {
+            	display: none;
+            	text-align: center;
+            }	
+			
+            .manual_content {
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
-
+            
+            .generated_content {
+            	margin: .5em auto;
+            	text-align: center;
+            	font-size: 2em;
+            	font-family: arial;
+            	color: blue;
+            }
+            
             .error_msg {
                 margin: 0 auto 0;
                 padding: 0;
@@ -111,7 +153,7 @@
             Lottery Generator 
         </a>
 
-        <form class="age_form" id="ageform" name="ageform" action="" style="display: block;">
+        <form class="age_form" id="ageform" name="ageform" action="">
             <fieldset>
                 <legend> Enter your age below: </legend>
                 <input class="age_input" name="userage" type="text" id="userage" >
@@ -120,7 +162,7 @@
             </fieldset>
         </form>
 
-        <form class="number_of_games_form" id ="numgamesform" name="number-of-games">
+        <form class="number_of_plays_form" id ="numplaysform" name="number-of-plays">
             <fieldset>
                 <legend> How many games would you like to play? (Max: 5 games): </legend>
                 <select class="number_select" name="plays" id="plays" style="background-color: white;">
@@ -131,69 +173,111 @@
                     <option value="5">5</option>
                 </select>
                 <div class="error_msg" id="numplayserror"> </div>
-                <input type="submit" value="Submit" onclick="formSubmitted('number-of-games-form')">
+                <input type="submit" value="Submit" >
             </fieldset>
         </form> 
 
         <form class="lottery_form" id = "lotteryform" name="lottery">
             <fieldset>
-                <legend id = "game-number" style="margin:0 auto 0;"> Game: 1/5 </legend>
-                <legend>Enter Lottery Number</legend>
-                <div class = "flex-container">
-                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" autocomplete="lottery-form" id="num-1" required>
-                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-2" required>
-                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-3" required>
-                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-4" required>
-                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-5" required>
-                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-6" required>
-                    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-7" required>
-                </div>
+                <legend id = "gamenumber" style="margin:0 auto 0;"> Game: 1/5 </legend>
+                
+                <div class="tab">
+					 <button class="tablinks" id="generatetab" onclick="showGenerate(event)">Generate</button>
+					 <button class="tablinks" id="manualtab" onclick="showManual(event)">Manual Input</button>
+				</div>
+                <div style="display:flex; justify-content:space-around; align-items: center; width:50%; margin: 0 auto 0;">
+	                <div class='lftabcontent' id='generated'>
+	                	<legend> Auto-generate </legend>
+		                <div class = "generated_content" id="generated_content">
+		                    1 1 1 1 1 1 1
+		                </div>
+		                <input type="submit" value="Generate" onclick="autoGenerate()">
+	                </div>
+	                <div class='lftabcontent' id='manual'>
+	                	<legend> Manual Input </legend>
+						<div class = "manual_content" id="manual_content"">
+						    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" autocomplete="lottery-form" id="num-1" required>
+						    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-2" required>
+						    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-3" required>
+						    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-4" required>
+						    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-5" required>
+						    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-6" required>
+						    <input class='number_field' type="number" pattern="[0-9]*"  value="" inputtype="numeric" id="num-7" required>
+						</div>
+						<input type="submit" value="Submit" onclick="verifyNumbers">
+					</div>
+				</div>
+                
                 <div class='error_msg' id="lottery-error-message"> </div> 
-                <div style="width:30%; margin: 0 auto 0;" >
-                    <input type="submit" value="Generate" onclick="autoGenerate()">
-                    <input type="submit" value="Submit" onclick="verifyNumbers">
-                </div>
+
             </fieldset>           
         </form>
 
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript">
+        
+        	var plays;
+        	var playsRemaining;
 
             function formSubmitted(elementId) {
                 const element = document.getElementById(elementId);
                 element.remove(); // Remove element
                 if (element.id == 'ageform') {
-                    showForm('numgamesform');
-                } else if (element.id == 'numgamesform') {
-                    showForm('lotteryform');
+                    showElement('numplaysform');
+                } else if (element.id == 'numplaysform') {
+                	updateLotteryForm();
+                    showElement('lotteryform');
                 }
             }
 
-            function showForm(elementId) {
+            function showElement(elementId) {
                 const element = document.getElementById(elementId);
                 element.style.display = "block";
             }
 
-            function hideForm(elementId) {
+            function hideElement(elementId) {
                 const element = document.getElementById(elementId);
                 element.style.display = "none";
+            }
+            
+            function showGenerate (event) {
+            	event.preventDefault();
+            	document.getElementById('manual').style.display = 'none';
+            	document.getElementById('generated').style.display = 'block'
+            }
+            
+            function showManual (event) {
+            	event.preventDefault();
+            	document.getElementById('manual').style.display = 'block';
+            	document.getElementById('generated').style.display = 'none'
+            }
+          
+            function updateLotteryForm() {
+            	document.getElementById('gamenumber').innerHTML = "Game: ${plays-(playsRemaining-1)}/${plays}";
+  				//display "Plays remaining: (playsRemaining)/(plays)"
+  				//set input fields to default value;
             }
 
             // jQuery Doc
 
             $(document).ready(function () {
-
+               
                 $.ajax({
-                        url : 'InitServlet',
-                        data : {},
-                        success : function(returnValue) {
-                            if (returnValue != "null") {
-                                hideForm('ageform');
-                                hideForm('numplaysform');
-                                showForm('lotteryform');
-                            }
+                    url : 'InitServlet',
+                    data : {},
+                    success : function(returnValue) {
+                        if (returnValue != "") {
+                        	const data = returnValue.split(',');
+                        	playsRemaining = data[0];
+                        	plays = data[1];
+                        	
+                            formSubmitted('numplaysform');
+                        } else {
+                        	showElement('ageform');
                         }
-                });
+                    }
+            	});
+                
 
                 $('#ageform').submit(function(event) {
                     event.preventDefault();
@@ -212,11 +296,38 @@
                         }
                     }); 
                 });
-            });
 
-            function init() {
-                showForm('ageform');
-            }            
+
+                $('#numplaysform').submit(function(event) {
+                    event.preventDefault();
+					
+                 	var val = $("#plays").val();
+                    $.ajax({
+                        url : 'NumPlaysServlet',
+                        data : {
+                            plays : val
+                        },
+                        success : function(returnValue) {
+                            if (returnValue == "true") {
+                            	playsRemaining = parseInt(val);
+                            	plays = parseInt(val);
+                            	hideElement('numplaysform');
+                            	showElement('lotteryform');
+                            	
+                            	var play = (plays-(playsRemaining-1)).toString();
+                            	var total = plays.toString();
+                            	
+                            	document.getElementById('gamenumber').innerHTML = "Game: " + play + "/" + total;
+                            	document.getElementById('numplaysform').remove();
+                            	showElement('lotteryform');
+                                
+                            } else {
+                                $('#numplayserror').html("Error ...");
+                            }
+                        }
+                    }); 
+                });
+            });  
         </script>
 
     </body>
