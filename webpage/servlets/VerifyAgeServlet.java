@@ -1,15 +1,12 @@
 
 import java.io.*;
-import jakarta.servlet.*;             // Tomcat 10
-import jakarta.servlet.http.*;        // Tomcat 10
-import jakarta.servlet.annotation.*;  // Tomcat 10
-//import javax.servlet.*;             // Tomcat 9
-//import javax.servlet.http.*;        // Tomcat 9
-//import javax.servlet.annotation.*;  // Tomcat 9
- 
+import jakarta.servlet.*;             
+import jakarta.servlet.http.*;        
+import jakarta.servlet.annotation.*;  
+
 @WebServlet("/VerifyAgeServlet")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
 public class VerifyAgeServlet extends HttpServlet {
-
+	private static final long serialVersionUID = 1L;
    // check if provided String parameter is numeric. 
    public static boolean isNumeric(String strNum) {
       if (strNum == null) {
