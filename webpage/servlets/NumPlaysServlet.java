@@ -11,16 +11,15 @@ public class NumPlaysServlet extends HttpServlet {
    public void doGet(HttpServletRequest request, HttpServletResponse response)
          throws IOException, ServletException {
 	   
-     HttpSession session = request.getSession();
-     String data = (String) request.getParameter("plays");
-     String returnValue;
-     int numPlays;
+	   HttpSession session = request.getSession();
+	   String data = (String) request.getParameter("plays");
+	   int numPlays;
 	   
 	   if ((session != null) && (session.getAttribute("plays") == null)) {
 		   session = request.getSession(true);
 		   numPlays = Integer.parseInt(data.trim());	// TO-DO: verify if provided data is in integer format first!
 		   
-		   if (numPlays <= 5) {							          // verify maximum 5 plays.
+		   if (numPlays <= 5) {							// verify maximum 5 plays.
 			   session.setAttribute("plays", numPlays);
 			   session.setAttribute("playsRemaining", numPlays);
 			   response.setContentType("text/plain");
