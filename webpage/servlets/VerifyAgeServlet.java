@@ -4,10 +4,11 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;        
 import jakarta.servlet.annotation.*;  
 
-@WebServlet("/VerifyAgeServlet")   // Take text input for user age. Check if input in valid integer format. Parse to integer and return 'true' if age >= 18.
+@WebServlet("/VerifyAgeServlet")   	// URL for request.
 public class VerifyAgeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   // check if provided String parameter is numeric. 
+	// Take text input for user age. Check if input in valid integer format. Parse to integer and return 'true' if age >= 18.
+	
    public static boolean isNumeric(String strNum) {
       if (strNum == null) {
          return false;
