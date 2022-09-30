@@ -3,10 +3,10 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;        
 import jakarta.servlet.annotation.*;  
 
-@WebServlet("/NumPlaysServlet")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
+@WebServlet("/NumPlaysServlet")   // URL for requests.
 public class NumPlaysServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	// Get current session. If session does not exist, verify input <= 5. Create new session and set attributes (plays) and (playsRemaining) to input value.
    @Override
    public void doGet(HttpServletRequest request, HttpServletResponse response)
          throws IOException, ServletException {
