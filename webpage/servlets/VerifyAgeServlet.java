@@ -4,7 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;        
 import jakarta.servlet.annotation.*;  
 
-@WebServlet("/VerifyAgeServlet")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
+@WebServlet("/VerifyAgeServlet")   // Take text input for user age. Check if input in valid integer format. Parse to integer and return 'true' if age >= 18.
 public class VerifyAgeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    // check if provided String parameter is numeric. 
