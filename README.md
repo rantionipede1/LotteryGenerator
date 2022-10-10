@@ -13,3 +13,7 @@ payers number and if both matches the player wins otherwise the players losses. 
 see if they can win the prize set for the lottery. 
 
 This program is currently been developed and is set to be done by 0ct 8, 2022.
+
+The Website 
+
+http://app2-env.eba-eyfkiqm3.us-west-1.elasticbeanstalk.com/
